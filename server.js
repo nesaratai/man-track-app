@@ -6,9 +6,9 @@ dotenv.config();
 const express = require('express');
 // load express
 const app = express();
-
 // bring mongoose in
 const mongoose = require("mongoose");
+
 
 const port = process.env.PORT ? process.env.PORT : '3001';
 
@@ -19,6 +19,9 @@ mongoose.connection.on("connected", () => {
     console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
   });
 
+app.use(express.urlencoded({ extended: false }));
+  
+
 
 
 
@@ -26,7 +29,6 @@ mongoose.connection.on("connected", () => {
 app.get("/", async (req, res) => {
     res.render("index.ejs");
   });
-
 
 
 app.listen(port, () => {
