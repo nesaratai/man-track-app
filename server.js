@@ -10,8 +10,16 @@ const app = express();
 const mongoose = require("mongoose");
 const morgan = require('morgan')
 const session = require('express-session');
+const isSignedIn = require('./middleware/is-signed-in.js');
+const passUserToView = require('./middleware/pass-user-to-view.js');
 const methodOverride = require('method-override');
+const projectRouter = require('./controllers/projects.js')
+const taskRouter = require('./controllers/tasks.js')
+
+
+
 const port = process.env.PORT ? process.env.PORT : '3001';
+const MongoStore = require("connect-mongo");
 
 // connect to mongoose
 mongoose.connect(process.env.MONGODB_URI);
@@ -39,9 +47,11 @@ app.use(
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
-  })
-);
-
+    store: MongoStore.create({
+      mongoUrl: process.env.MONGODB_URI,
+  }),
+}));
+app.use(passUserToView); 
 
 
 
@@ -55,8 +65,9 @@ app.get("/", async (req, res) => {
 
 
 app.use("/auth", authController);
-
-
+app.use(isSignedIn);
+app.use("/project/", projectRouter);
+app.use("/task/", taskRouter);
 
 app.listen(port, () => {
   console.log(`The app is ready on port ${port}!`);
