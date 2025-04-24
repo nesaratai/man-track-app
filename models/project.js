@@ -19,11 +19,14 @@ const projectSchema = mongoose.Schema({
     },
     Notes: {
         type: String
-    }
+    },
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        // reference to the User model
+        ref: 'User'  
+      }
 });
 
-// create a model
-const Project = mongoose.model('Project', projectSchema);
+// create a model and export it
+module.exports = mongoose.model('Project', projectSchema);
 
-//export model
-module.exports = Project;

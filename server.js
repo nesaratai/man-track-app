@@ -41,7 +41,7 @@ const authController = require('./controllers/auth.js')
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
 app.use(morgan('dev'));
-// new
+
 app.use(
   session({
     secret: process.env.SESSION_SECRET,

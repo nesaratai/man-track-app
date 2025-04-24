@@ -6,11 +6,12 @@
     <title>Document</title>
 </head>
 <body>
+  <%- include('./partials/_navbar.ejs') %>
     <% if (user) { %>
         <h1>Welcome to ManTrack <% user.username %>!</h1>
         <p>A Project Managment App</p>
         <p><a href="/auth/sign-out">Sign out</a></p>
-        <p><a href="/project/project">Add New Project</a></p>
+        <p><a href="/project/addproject">Add New Project</a></p>
         <% } else { %>
         <h1>Welcome to the Project Managment App.</h1>
         <p>

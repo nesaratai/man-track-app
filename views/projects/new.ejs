@@ -6,17 +6,18 @@
     <title>Document</title>
 </head>
 <body>
+    <%- include('../partials/_navbar.ejs') %>
     <h1> add new project </h1>
     <div>
-        <form action="" method="">
+        <form action="/project/" method="POST">
             <label for="CompanyName">Company Name:</label>
-            <input type="text">
+            <input name="CompanyName" type="text">
             <label for="ProjectName">Project Name:</label>
-            <input type="text">
+            <input name="ProjectName" type="text">
             <label for="StartDate">Start Date:</label>
-            <input type="date">
+            <input name="StartDate" type="date">
             <label for="DueDate">Due Date:</label>
-            <input type="date"><br>
+            <input name="DueDate" type="date"><br>
             <label for="Description">Description:</label>
             <textarea name="Description" id="Description"></textarea><br>
             <label for="Notes">Notes:</label>
