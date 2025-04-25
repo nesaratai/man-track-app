@@ -1,0 +1,17 @@
+<%- include('../partials/_header.ejs') %>
+<body>
+
+  <h1><%= project.ProjectName %> Project</h1>
+
+  <p><strong>Company Name:</strong> <%= project.CompanyName %></p>
+  <p><strong>Start Date:</strong> <%= project.StartDate?.toDateString?.() || '' %></p>
+  <p><strong>Due Date:</strong> <%= project.DueDate?.toDateString?.() || '' %></p>
+  <p><strong>Description:</strong> <%= project.Description %></p>
+  <p><strong>Notes:</strong> <%= project.Notes %></p>
+
+  <a href="/project/<%= project._id %>/edit">Edit</a>
+  |
+  <form action="/project/<%= project._id %>?_method=DELETE" method="POST" onsubmit="return confirm('Are you sure you want to delete this project?');">
+<button type="submit" style="color: red;">Delete</button>
+</body>
+</html>

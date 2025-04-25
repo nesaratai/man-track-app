@@ -19,14 +19,14 @@ router.post("/", async (req, res) => {
         userId: currentUser._id
     });
 
-    //save the project
+    // save the project
     await newProject.save();
 
     // send the user back to the project list
     res.redirect("/project/")
 });
 
-// list project
+// list all projects
 router.get('/', async (req, res) => {
     try {
         // get projects from the database only for the current user
@@ -51,7 +51,56 @@ router.get('/addproject', (req, res) => {
     res.render('projects/new.ejs');
 });
 
+router.get('/:id', async (req, res) => {
+    try {
+        // find the project by id
+        const project = await Project.findById(req.params.id);
 
+        // render project view page
+        res.render('projects/show.ejs', {
+            project
+        });
+    } catch (error) {
+        console.error(error);
+        res.redirect('/project');
+    }
+});
+// edit the project
+router.get('/:id/edit', async (req, res) => {
+    try {
+        // Find the project by id
+        const project = await Project.findById(req.params.id);
+        // render edit page
+        res.render('projects/edit.ejs', { project });
+    } catch (error) {
+        console.error(error);
+        res.redirect('/project');
+    }
+});
+
+//update the a project
+router.put('/:id', async (req, res) => {
+    try {
+        await Project.findByIdAndUpdate(req.params.id, req.body);
+        res.redirect(`/project/${req.params.id}`);
+    } catch (error) {
+        console.error(error);
+        res.redirect('/project');
+    }
+});
+
+// delet the project
+router.delete('/:id', async (req, res) => {
+    try {
+        //finde the project by id and delete
+      await Project.findByIdAndDelete(req.params.id);
+      // then redirect to project
+      res.redirect('/project');
+    } catch (error) {
+      console.error(error);
+      res.redirect('/project');
+    }
+  });
 
 
 module.exports = router;

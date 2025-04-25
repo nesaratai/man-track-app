@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title><%= typeof title != "undefined" ? title : '' %></title>
+
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+  <script defer src="/app.js"></script>
+</head>
+<nav class="navbar">
+    <div class="navbar-left">
+      <a href="/" class="logo">ManTrack</a>
+    </div>
+
+    <div class="navbar-right" id="navbarRight">
+      <% if(user) { %>
+        <a href="/">Home</a>
+        <a href="/project/">Projects</a>
+        <a href="/profile/<%= user._id %>">Profile</a>
+        <a href="/auth/sign-out" class="sign-out">Sign Out</a>
+      <% } else { %>
+        <a href="/auth/sign-in">Sign In</a>
+        <a href="/auth/sign-up">Sign Up</a>
+      <% } %>
+    </div>
+  </nav>

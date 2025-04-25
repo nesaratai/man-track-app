@@ -1,0 +1,30 @@
+<%- include('../partials/_navbar.ejs') %>
+<body>
+  <% const formatDate = date => date?.toISOString().slice(0, 10); %>
+  <h1>Edit <%= project.ProjectName %> Project</h1>
+
+  <div>
+    <form action="/project/<%= project._id %>?_method=PUT" method="POST">
+      <label for="CompanyName">Company Name:</label>
+      <input name="CompanyName" type="text" value="<%= project.CompanyName %>">
+
+      <label for="ProjectName">Project Name:</label>
+      <input name="ProjectName" type="text" value="<%= project.ProjectName %>">
+
+      <label for="StartDate">Start Date:</label>
+      <input type="date" name="StartDate" value="<%= formatDate(project.StartDate) %>">
+
+      <label for="DueDate">Due Date:</label>
+      <input type="date" name="DueDate" value="<%= formatDate(project.DueDate) %>"><br>
+
+      <label for="Description">Description:</label>
+      <textarea name="Description" id="Description"><%= project.Description %></textarea><br>
+
+      <label for="Notes">Notes:</label>
+      <textarea name="Notes" id="Notes"><%= project.Notes %></textarea><br>
+
+      <button type="submit">Update</button>
+    </form>
+  </div>
+</body>
+</html>

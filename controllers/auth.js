@@ -36,9 +36,9 @@ router.post('/sign-up', async (req, res) => {
       const hashedPassword = bcrypt.hashSync(req.body.password, 10);
       req.body.password = hashedPassword;
     
-      // ready to create user
+      // create user
       await User.create(req.body);
-    
+      // redirect to sign in page
       res.redirect('/auth/sign-in');
     } catch (error) {
       console.log(error);
@@ -60,6 +60,7 @@ router.post('/sign-up', async (req, res) => {
         req.body.password,
         userInDatabase.password
       );
+      // if the password is not valid return login failed
       if (!validPassword) {
         return res.send('Login failed. Please try again.');
       }
@@ -71,13 +72,15 @@ router.post('/sign-up', async (req, res) => {
         username: userInDatabase.username,
         _id: userInDatabase._id
       };
+      // save the session 
       req.session.save();
-    
+
       res.redirect('/');
     } catch (error) {
       console.log(error);
       res.redirect('/');
     }
   });
-  
+
+
 module.exports = router;

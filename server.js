@@ -15,32 +15,41 @@ const passUserToView = require('./middleware/pass-user-to-view.js');
 const methodOverride = require('method-override');
 const projectRouter = require('./controllers/projects.js')
 const taskRouter = require('./controllers/tasks.js')
-
+const path = require('path');
 
 
 const port = process.env.PORT ? process.env.PORT : '3001';
 const MongoStore = require("connect-mongo");
 
-// connect to mongoose
+// Connect to mongoose
 mongoose.connect(process.env.MONGODB_URI);
-// log connection status to terminal on start
+// Log connection status to terminal on start
 mongoose.connection.on("connected", () => {
     console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
   });
 
   
-// import models
+// Import models
 const User = require('./models/user.js')
 const Project = require('./models/project.js')
 const Task = require('./models/task.js')
 
-// import auth controllers
+// Import auth controllers
 const authController = require('./controllers/auth.js')
 
+// Set up EJS
+app.set('view engine', 'ejs');
 
+
+
+// Middleware
 app.use(express.urlencoded({ extended: false }));
+
+// Method Override
 app.use(methodOverride("_method"));
 app.use(morgan('dev'));
+app.use(express.static(path.join(__dirname, 'public')));
+
 
 app.use(
   session({
@@ -58,11 +67,26 @@ app.use(passUserToView);
 
 // render the home page
 app.get("/", async (req, res) => {
+  console.log(req.session.user)
     res.render("index.ejs",{
     user: req.session.user,
     });
   });
 
+
+  // get profile for user
+  app.get('/profile/:id', async (req, res) => {
+    try {
+       // find the user by id
+          const user = await User.findById(req.params.id);
+        // render to profile
+         res.render('profile', { user });
+      } catch (error) {
+          console.error(error);
+          // redirect to home page if there is an issue
+          res.redirect('/');
+        }
+     });
 
 app.use("/auth", authController);
 app.use(isSignedIn);

@@ -1,0 +1,9 @@
+<%- include('./partials/_header.ejs') %>
+<body>
+    <h1>My Profile,</h1> 
+    <p>First Name: <%= user.name %></p>
+    <p>Last Name: <%= user.lastname %></p>
+    <p>Email: <%= user.emailaddress %></p>
+    <p>Date of Birth: <%= user.dob ? user.dob.toDateString() : 'Not Provided' %></p>
+</body>
+</html>
