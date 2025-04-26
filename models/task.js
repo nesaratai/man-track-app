@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 
 // create schema
 const taskSchema = mongoose.Schema({
+    ProjectName: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Project',
+    },
     Type: [{
         type: String,
         enum: ['Task','Issue']
@@ -11,6 +15,11 @@ const taskSchema = mongoose.Schema({
     },
     DueDate: {
         type: Date
+    },
+    Status: {
+        type: String,
+        enum: ['Pending', 'In Progress','Completed'],
+        default: 'Pending',
     },
     Description: {
         type: String

@@ -24,7 +24,11 @@ const projectSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         // reference to the User model
         ref: 'User'  
-      }
+    },
+    tasks: [{ 
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'Task' 
+    }],
 });
 
 // create a model and export it

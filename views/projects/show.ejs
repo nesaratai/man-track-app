@@ -1,23 +1,46 @@
 <%- include('../partials/_header.ejs') %>
 <body>
-  <div class="p-detail-container">
+  <!-- Project Section -->
+  <div class="pro-detail-container">
     <h1><%= project.ProjectName %> Project</h1>
-
-    <div class="p-info">
-      <p><strong>Company Name:</strong> <span><%= project.CompanyName %></span></p>
-      <p><strong>Start Date:</strong> <span><%= project.StartDate?.toDateString?.() || '' %></span></p>
-      <p><strong>Due Date:</strong> <span><%= project.DueDate?.toDateString?.() || '' %></span></p>
-      <p><strong>Description:</strong> <span><%= project.Description %></span></p>
-      <p><strong>Notes:</strong> <span><%= project.Notes %></span></p>
+    <div class="pro-info">
+      <p><strong>Company:</strong> <%= project.CompanyName %></p>
+      <p><strong>Start:</strong> <%= project.StartDate?.toDateString() %></p>
+      <p><strong>Due:</strong> <%= project.DueDate?.toDateString() %></p>
+      <p><strong>Description:</strong> <%= project.Description %></p>
+      <p><strong>Notes:</strong> <%= project.Notes %></p>
     </div>
-
-    <div class="p-btn">
+    <div class="pro-btn">
       <a href="/project/<%= project._id %>/edit" class="btn edit-btn">Edit</a>
-      
-      <form action="/project/<%= project._id %>?_method=DELETE" method="POST" onsubmit="return confirm('Are you sure you want to delete this project?');">
+      <form action="/project/<%= project._id %>?_method=DELETE" method="POST" onsubmit="return confirm('Delete this project?');">
         <button type="submit" class="btn delete-btn">Delete</button>
       </form>
     </div>
   </div>
+
+  <!-- Tasks Section -->
+  <div class="task-section">
+    <h2>Tasks</h2>
+    <% if (project.tasks && project.tasks.length > 0) { %>
+      <table class="task-table">
+        <thead>
+          <tr><th>Type</th><th>Due</th><th>Status</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+          <% project.tasks.forEach(task => { %>
+            <tr>
+              <td><%= task.Type %></td>
+              <td><%= new Date(task.DueDate).toDateString() %></td>
+              <td><%= task.Status %></td>
+              <td><%= task.Description %></td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    <% } else { %>
+      <p>No tasks available.</p>
+    <% } %>
+    <a href="/task/add/<%= project._id %>" class="btn add-task-btn">Add Task</a>
+  </div>
 </body>
-</html>
+  <%- include('../partials/_footer.ejs') %>

@@ -1,4 +1,4 @@
-<%- include('../partials/_navbar.ejs') %>
+<%- include('../partials/_header.ejs') %>
 <body>
   <% const formatDate = date => date?.toISOString().slice(0, 10); %>
   <h1>Edit <%= project.ProjectName %> Project</h1>
@@ -27,4 +27,4 @@
     </form>
   </div>
 </body>
-</html>
+<%- include('../partials/_footer.ejs') %>
