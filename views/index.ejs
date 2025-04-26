@@ -7,11 +7,36 @@
       <p><a href="/auth/sign-out">Sign out</a></p>
       <p><a href="/project/addproject">Add New Project</a></p>
     <% } else { %>
-      <h1>Welcome to the Project Management App.</h1>
-      <p>
-        <a href="/auth/sign-up">Sign up</a> or <a href="/auth/sign-in">sign in</a>.
-      </p>
+      <h1>Welcome to ManTrack Management.</h1>
+      <section class="about-section">
+        <h2><strong>ManTrack</strong> is a clean, fast, and user-friendly project management tool that helps individuals and teams organize, track, and complete their projects with confidence.</h2>
+    
+        <div class="about-columns">
+          <div class="about-box">
+            <h3>🎯 Vision</h3>
+            <p>To empower people to manage their work effortlessly and efficiently with simple, focused project tracking tools.</p>
+          </div>
+    
+          <div class="about-box">
+            <h3>🌍 Mission</h3>
+            <p>To provide a lightweight and intuitive platform for organizing, planning, and achieving goals — one project at a time.</p>
+          </div>
+    
+          <div class="about-box">
+            <h3>⚙️ Capabilities</h3>
+            <ul>
+              <li>Create and manage projects</li>
+              <li>Track deadlines and project details</li>
+              <li>User profiles and personalized dashboards</li>
+              <li>Responsive design for any device</li>
+              <li>Edit and delete project records with ease</li>
+            </ul>
+          </div>
+        </div>
+      </section>
     <% } %>
   </div>
+
+
 </body>
-</html>
+<%- include('./partials/_footer.ejs') %>

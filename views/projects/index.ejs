@@ -1,10 +1,24 @@
 <%- include('../partials/_header.ejs') %>
 <body>
-    <h1>Projects</h1>
-    <ul>
-        <% projects.forEach((project)=>{ %>
-        <li><a href="/project/<%= project._id %>"><%= project.ProjectName %></a> at <%= project.CompanyName %></li>
+  <h1>Projects</h1>
+
+  <div class="table-container">
+    <table class="project-table">
+      <thead>
+        <tr>
+          <th>Project</th>
+          <th>Company</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% projects.forEach((project) => { %>
+          <tr>
+            <td><a href="/project/<%= project._id %>"><%= project.ProjectName %></a></td>
+            <td><%= project.CompanyName %></td>
+          </tr>
         <% }) %>
-      </ul>
+      </tbody>
+    </table>
+  </div>
 </body>
 </html>
