@@ -1,3 +1,4 @@
+const { defaultMaxListeners } = require('connect-mongo');
 const mongoose = require('mongoose');
 
 // create schema
@@ -8,7 +9,8 @@ const taskSchema = mongoose.Schema({
     },
     Type: [{
         type: String,
-        enum: ['Task','Issue']
+        enum: ['Task','Issue'],
+        default: 'Task',
       }],
     ReportedDate: {
         type: Date

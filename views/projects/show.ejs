@@ -36,18 +36,30 @@
       <h2>Tasks</h2>
       <% if (project.tasks && project.tasks.length > 0) { %>
         <table class="task-table">
-          <thead><tr><th>Type</th><th>Status</th><th>Description</th></tr></thead>
-          <tbody>
-            <% project.tasks.forEach(task => { %>
-              <tr><td><%= task.type %></td><td><%= task.status %></td><td><%= task.description %></td></tr>
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Status</th>
+              <th>Description</th>
+           </tr>
+          </thead>
+         <tbody>
+           <% project.tasks.forEach(task => { %>
+             <tr>
+                <td><%= task.Type %></td>
+               <td><%= task.Status %></td>
+               <td><%= task.Description %></td>
+               <td><a href="/task/edit/<%= task._id %>" class="btn">Edit</a></td>
+             </tr>
             <% }) %>
           </tbody>
-        </table>
+       </table>
       <% } else { %>
-        <p>No tasks available.</p>
+       <p>No tasks available.</p>
       <% } %>
-      <a href="/task/add/<%= project._id %>" class="btn">Add Task</a>
+     <a href="/task/add/<%= project._id %>" class="btn">Add Task</a>
     </div>
   </body>
   <%- include('../partials/_footer.ejs') %>
+
 </html>

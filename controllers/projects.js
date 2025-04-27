@@ -46,14 +46,14 @@ router.get('/', async (req, res) => {
 });
 
 
-// routs to new page for projects
+// Routs to new page for projects
 router.get('/addproject', (req, res) => {
     res.render('projects/new.ejs');
 });
-// get all projects and associated tasks
+// Get all projects and associated tasks
 router.get('/:id', async (req, res) => {
     try {
-        // find the project by id
+        // Find the project by id
         const project = await Project.findById(req.params.id).populate('tasks');
 
         console.log(project)
