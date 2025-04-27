@@ -1,46 +1,53 @@
-<%- include('../partials/_header.ejs') %>
-<body>
-  <!-- Project Section -->
-  <div class="pro-detail-container">
-    <h1><%= project.ProjectName %> Project</h1>
-    <div class="pro-info">
-      <p><strong>Company:</strong> <%= project.CompanyName %></p>
-      <p><strong>Start:</strong> <%= project.StartDate?.toDateString() %></p>
-      <p><strong>Due:</strong> <%= project.DueDate?.toDateString() %></p>
-      <p><strong>Description:</strong> <%= project.Description %></p>
-      <p><strong>Notes:</strong> <%= project.Notes %></p>
-    </div>
-    <div class="pro-btn">
-      <a href="/project/<%= project._id %>/edit" class="btn edit-btn">Edit</a>
-      <form action="/project/<%= project._id %>?_method=DELETE" method="POST" onsubmit="return confirm('Delete this project?');">
-        <button type="submit" class="btn delete-btn">Delete</button>
-      </form>
-    </div>
-  </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Tasks Section -->
-  <div class="task-section">
-    <h2>Tasks</h2>
-    <% if (project.tasks && project.tasks.length > 0) { %>
-      <table class="task-table">
-        <thead>
-          <tr><th>Type</th><th>Due</th><th>Status</th><th>Description</th></tr>
-        </thead>
-        <tbody>
-          <% project.tasks.forEach(task => { %>
-            <tr>
-              <td><%= task.Type %></td>
-              <td><%= new Date(task.DueDate).toDateString() %></td>
-              <td><%= task.Status %></td>
-              <td><%= task.Description %></td>
-            </tr>
-          <% }) %>
-        </tbody>
-      </table>
-    <% } else { %>
-      <p>No tasks available.</p>
-    <% } %>
-    <a href="/task/add/<%= project._id %>" class="btn add-task-btn">Add Task</a>
-  </div>
-</body>
+  <title>Home</title>
+
+  <link rel="stylesheet" href="/stylesheets/project.css" />
+  <script defer src="/app.js"></script>
+</head>
+
+<%- include('../partials/_navbar.ejs') %>
+
+  <body>
+    <!-- Project Section -->
+    <div class="project-detail">
+      <h1><%= project.ProjectName %> Project</h1>
+      <div class="info">
+        <p><strong>Company:</strong> <%= project.CompanyName %></p>
+        <p><strong>Start:</strong> <%= project.StartDate?.toDateString() %></p>
+        <p><strong>Due:</strong> <%= project.DueDate?.toDateString() %></p>
+        <p><strong>Description:</strong> <%= project.Description %></p>
+        <p><strong>Notes:</strong> <%= project.Notes %></p>
+      </div>
+      <div class="actions">
+        <a href="/project/<%= project._id %>/edit" class="btn">Edit</a>
+        <form action="/project/<%= project._id %>?_method=DELETE" method="POST">
+          <button type="submit" class="delete-btn">Delete</button>
+        </form>
+      </div>
+    </div>
+  
+    <!-- Tasks Section -->
+    <div class="tasks">
+      <h2>Tasks</h2>
+      <% if (project.tasks && project.tasks.length > 0) { %>
+        <table class="task-table">
+          <thead><tr><th>Type</th><th>Status</th><th>Description</th></tr></thead>
+          <tbody>
+            <% project.tasks.forEach(task => { %>
+              <tr><td><%= task.type %></td><td><%= task.status %></td><td><%= task.description %></td></tr>
+            <% }) %>
+          </tbody>
+        </table>
+      <% } else { %>
+        <p>No tasks available.</p>
+      <% } %>
+      <a href="/task/add/<%= project._id %>" class="btn">Add Task</a>
+    </div>
+  </body>
   <%- include('../partials/_footer.ejs') %>
+</html>

@@ -1,4 +1,17 @@
-<%- include('../partials/_header.ejs') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Home</title>
+
+  <link rel="stylesheet" href="/stylesheets/project.css" />
+  <script defer src="/app.js"></script>
+</head>
+
+<%- include('../partials/_navbar.ejs') %>
+
 <body>
   <h1>Projects</h1>
 
@@ -19,6 +32,12 @@
         <% }) %>
       </tbody>
     </table>
+    
+    <div class="addbtn">
+      <a href="/project/addproject">Add New Project</a>
+    </div>
+    
   </div>
 </body>
 <%- include('../partials/_footer.ejs') %>
+</html>

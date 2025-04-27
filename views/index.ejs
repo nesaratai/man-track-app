@@ -1,11 +1,26 @@
-<%- include('./partials/_header.ejs') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Home</title>
+
+  <link rel="stylesheet" href="/stylesheets/home.css" />
+  <script defer src="/app.js"></script>
+</head>
+
+<%- include('./partials/_navbar.ejs') %>
+
 <body>
+  <div class="wrapper">
   <div class="content">
     <% if (user) { %>
-      <h1>Welcome to ManTrack <%= user.name %>!</h1>
-      <p>A Project Management App</p>
-      <p><a href="/auth/sign-out">Sign out</a></p>
-      <p><a href="/project/addproject">Add New Project</a></p>
+      <h1 class="welcome">Welcome to ManTrack, <%= user.username %>!</h1>
+      <p class="description">A Project Management App</p>
+      <div class="dashboard-links">
+        <a href="/project/">My Projects</a>
+      </div>
     <% } else { %>
       <h1>Welcome to ManTrack Management.</h1>
       <section class="about-section">
@@ -36,7 +51,7 @@
       </section>
     <% } %>
   </div>
-
-
+  <%- include('./partials/_footer.ejs') %>
+</div>
 </body>
-<%- include('./partials/_footer.ejs') %>
+</html>

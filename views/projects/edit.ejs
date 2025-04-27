@@ -1,10 +1,26 @@
-<%- include('../partials/_header.ejs') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title><%= project.ProjectName %></title>
+
+  <link rel="stylesheet" href="/stylesheets/project.css" />
+  <link rel="stylesheet" href="/stylesheets/form.css" />
+  <script defer src="/app.js"></script>
+</head>
+
+<%- include('../partials/_navbar.ejs') %>
+
 <body>
   <% const formatDate = date => date?.toISOString().slice(0, 10); %>
-  <h1>Edit <%= project.ProjectName %> Project</h1>
+  
 
   <div>
+    
     <form action="/project/<%= project._id %>?_method=PUT" method="POST">
+      <div class="form-title">Edit <span class="projectname"><%= project.ProjectName %></span> Project</div>
       <label for="CompanyName">Company Name:</label>
       <input name="CompanyName" type="text" value="<%= project.CompanyName %>">
 
@@ -23,8 +39,9 @@
       <label for="Notes">Notes:</label>
       <textarea name="Notes" id="Notes"><%= project.Notes %></textarea><br>
 
-      <button type="submit">Update</button>
+      <button class="button" type="submit">Update</button>
     </form>
   </div>
 </body>
 <%- include('../partials/_footer.ejs') %>
+</html>

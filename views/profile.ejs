@@ -1,9 +1,26 @@
-<%- include('./partials/_header.ejs') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Profile</title>
+
+  <link rel="stylesheet" href="/stylesheets/home.css" />
+  <script defer src="/app.js"></script>
+</head>
+
+<%- include('./partials/_navbar.ejs') %>
+
 <body>
-    <h1>My Profile,</h1> 
-    <p>First Name: <%= user.name %></p>
-    <p>Last Name: <%= user.lastname %></p>
-    <p>Email: <%= user.emailaddress %></p>
-    <p>Date of Birth: <%= user.dob ? user.dob.toDateString() : 'Not Provided' %></p>
+    <div class="profile-container">
+        <h1>My Profile</h1>
+        <div><span>First Name:</span> <%= user.name %></div>
+        <div><span>Last Name:</span> <%= user.lastname %></div>
+        <div><span>Email:</span> <%= user.emailaddress %></div>
+        <div><span>Date of Birth:</span> <%= user.dob ? user.dob.toDateString() : 'Not Provided' %></div>
+      
+        <a href="/profile/edit" class="btn">Edit Profile</a>
+      </div>
 </body>
 </html>

@@ -1,38 +1,39 @@
-<%- include('../partials/_header.ejs') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>Edit Task</title>
+
+  <link rel="stylesheet" href="/stylesheets/task.css" />
+  <link rel="stylesheet" href="/stylesheets/form.css" />
+  <script defer src="/app.js"></script>
+</head>
+
+<%- include('../partials/_navbar.ejs') %>
+<body></body>
 <div class="form-container">
   <h1>Edit Task</h1>
 
   <form action="/project/<%= projectId %>/tasks/<%= task._id %>?_method=PUT" method="POST">
-
-    <!-- Task Type -->
     <label for="type">Type</label>
     <select name="task[Type]" id="type" required>
       <option value="Task" <%= task.Type.includes('Task') ? 'selected' : '' %>>Task</option>
       <option value="Issue" <%= task.Type.includes('Issue') ? 'selected' : '' %>>Issue</option>
     </select>
-
-    <!-- Reported Date -->
     <label for="reportedDate">Reported Date</label>
     <input type="date" name="task[ReportedDate]" id="reportedDate" value="<%= task.ReportedDate?.toISOString().split('T')[0] %>" required>
-
-    <!-- Due Date -->
     <label for="dueDate">Due Date</label>
     <input type="date" name="task[DueDate]" id="dueDate" value="<%= task.DueDate?.toISOString().split('T')[0] %>" required>
-
-    <!-- Status -->
     <label for="status">Status</label>
     <select name="task[Status]" id="status" required>
       <option value="Pending" <%= task.Status === 'Pending' ? 'selected' : '' %>>Pending</option>
       <option value="In Progress" <%= task.Status === 'In Progress' ? 'selected' : '' %>>In Progress</option>
       <option value="Completed" <%= task.Status === 'Completed' ? 'selected' : '' %>>Completed</option>
     </select>
-
-    <!-- Description -->
     <label for="description">Description</label>
     <textarea name="task[Description]" id="description" rows="4"><%= task.Description %></textarea>
-
-    <!-- Notes -->
     <label for="notes">Notes</label>
     <textarea name="task[Notes]" id="notes" rows="3"><%= task.Notes %></textarea>
 
@@ -41,5 +42,6 @@
 
   <a href="/project/<%= projectId %>" class="btn back-btn">Back to Project</a>
 </div>
-
+</body>
 <%- include('../partials/_footer.ejs') %>
+</html>

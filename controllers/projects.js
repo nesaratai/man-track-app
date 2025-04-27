@@ -50,7 +50,7 @@ router.get('/', async (req, res) => {
 router.get('/addproject', (req, res) => {
     res.render('projects/new.ejs');
 });
-// get all projects
+// get all projects and associated tasks
 router.get('/:id', async (req, res) => {
     try {
         // find the project by id

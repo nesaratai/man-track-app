@@ -22,7 +22,7 @@ router.post('/:projectId', async (req, res) => {
       const project = await Project.findById(req.params.projectId);
       const task = new Task({
         ...req.body,
-        ProjectName: project._id, // Associate task with the project
+        project: project._id, // Associate task with the project
       });
   
       // Save the task

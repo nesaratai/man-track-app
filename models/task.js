@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 // create schema
 const taskSchema = mongoose.Schema({
-    ProjectName: {
+    project: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Project',
     },

@@ -66,13 +66,26 @@ app.use(passUserToView);
 
 
 // render the home page
-app.get("/", async (req, res) => {
-  console.log(req.session.user)
-    res.render("index.ejs",{
-    user: req.session.user,
-    });
-  });
+app.get('/', async (req, res) => {
+  try {
+    let userProjects = [];
+    if (req.session.user) {
+      userProjects = await Project.find({ createdBy: req.session.user._id });
+    }
+    const allProjects = await Project.find();
+    const tasks = await Task.find().sort({ ReportedDate: -1 });
 
+    res.render('index', {
+      user: req.session.user,
+      userProjects,
+      allProjects,
+      tasks,
+    });
+  } catch (error) {
+    console.error(error);
+    res.redirect('/auth/sign-in');
+  }
+});
 
   // get profile for user
   app.get('/profile/:id', async (req, res) => {
