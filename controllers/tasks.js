@@ -78,6 +78,18 @@ router.put('/tasks/:taskId', async (req, res) => {
   }
 });
 
+// delet the task
+router.delete('/:id', async (req, res) => {
+    try {
+        //finde the task by id and delete
+      await Task.findByIdAndDelete(req.params.id);
+      // then redirect to project
+      res.redirect(`/project/${project._id}`);
+    } catch (error) {
+      console.error(error);
+      res.redirect('/project');
+    }
+  });
 
 
 module.exports = router;

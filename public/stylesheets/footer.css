@@ -5,6 +5,7 @@ footer {
     font-family: 'Segoe UI', Tahoma, Geneva, sans-serif;
     text-align: center;
     margin-top: 10px;
+    border-radius: 5px;
 }
 
 .footer-content {

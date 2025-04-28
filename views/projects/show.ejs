@@ -7,6 +7,7 @@
   <title>Home</title>
 
   <link rel="stylesheet" href="/stylesheets/project.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <script defer src="/app.js"></script>
 </head>
 
@@ -24,23 +25,26 @@
         <p><strong>Notes:</strong> <%= project.Notes %></p>
       </div>
       <div class="actions">
-        <a href="/project/<%= project._id %>/edit" class="btn">Edit</a>
+        <a href="/project/<%= project._id %>/edit" class="edt-btn">EDIT</a>
         <form action="/project/<%= project._id %>?_method=DELETE" method="POST">
-          <button type="submit" class="delete-btn">Delete</button>
+          <button type="submit" class="dlt-btn"><i class="fas fa-trash"></i></button>
         </form>
       </div>
     </div>
   
     <!-- Tasks Section -->
     <div class="tasks">
-      <h2>Tasks</h2>
+      <div>Project Board</div>
       <% if (project.tasks && project.tasks.length > 0) { %>
         <table class="task-table">
           <thead>
             <tr>
               <th>Type</th>
               <th>Status</th>
+              <th>Reported Date</th>
+              <th>Due Date</th>
               <th>Description</th>
+              <th>Actions</th>
            </tr>
           </thead>
          <tbody>
@@ -48,8 +52,17 @@
              <tr>
                 <td><%= task.Type %></td>
                <td><%= task.Status %></td>
+               <td><%= task.ReportedDate?.toDateString() %></td>
+               <td><%= task.DueDate?.toDateString() %></td>
                <td><%= task.Description %></td>
-               <td><a href="/task/edit/<%= task._id %>" class="btn">Edit</a></td>
+               <td>
+                <a href="/task/edit/<%= task._id %>" class="edt-btn">
+                  <i class="fas fa-pen"></i>
+                </a>
+                <form action="/task/<%= task._id %>?_method=DELETE" method="POST" style="display: inline;">
+                  <button type="submit" class="dlt-btn"><i class="fas fa-trash"></i></button>
+                </form>
+              </td>
              </tr>
             <% }) %>
           </tbody>
@@ -57,7 +70,7 @@
       <% } else { %>
        <p>No tasks available.</p>
       <% } %>
-     <a href="/task/add/<%= project._id %>" class="btn">Add Task</a>
+     <a href="/task/add/<%= project._id %>" class="add-btn">Add Task</a>
     </div>
   </body>
   <%- include('../partials/_footer.ejs') %>

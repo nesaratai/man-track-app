@@ -6,7 +6,7 @@ dotenv.config();
 const express = require('express');
 // load express
 const app = express();
-// bring mongoose in
+// bring apps in
 const mongoose = require("mongoose");
 const morgan = require('morgan')
 const session = require('express-session');

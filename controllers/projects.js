@@ -56,7 +56,6 @@ router.get('/:id', async (req, res) => {
         // Find the project by id
         const project = await Project.findById(req.params.id).populate('tasks');
 
-        console.log(project)
         // render project view page
         res.render('projects/show.ejs', {
             project

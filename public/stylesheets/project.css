@@ -106,44 +106,62 @@ h1 {
     background-color: #ee7939;
 }
 
-.delete-btn {
-    padding: 7px 7px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 8px;
-    border-color: none;
-}
-.actions .delete-btn {
-  background-color: #ee7939;
-  color: #fff;
-}
-
-.tasks {
-  width: 70%;
-}
 
 .task-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 12px;
-  margin-bottom: 15px;
+  font-size: 8px;
 }
+
+.task-table th, .task-table td {
+  border: 1px solid #ddd;
+}
+
 
 .task-table th {
-  background-color: #025259;
-  color: #fff;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  text-align: left;
+  background-color: #2d5849;
+  color: white;
+}
+.dlt-btn {
+  background: none;
+  border: none;
+  color: red;
+  cursor: pointer;
+  font-size: 10px;
 }
 
-.task-table tr:hover {
-  background-color: #f4f4f4;
+.dlt-btn:hover {
+  color: darkred;
 }
 
-.task-table td a {
-  color: #025259;
+.edt-btn {
+  background-color: none;
+  color: rgb(218, 167, 46);
+  padding: 6px 8px;
+  border: none;
+  border-radius: 4px;
+  font-size: 10px;
   text-decoration: none;
-  font-weight: bold;
 }
 
-.task-table td a:hover {
-  color: #D94F04;
+.edt-btn:hover {
+  color: #038b5e;
+}
+
+.add-btn{
+  display: inline-block;
+  background-color: rgb(214, 217, 153);
+  font-size: 7px;
+  text-decoration: none;
+  padding: 7px 10px;
+  text-align: center;
+  border-radius: 3px;
+  font-weight: bold;
+  margin: 5px;
+} 
+.add-btn:hover{
+  background-color: #D94F04;
 }
