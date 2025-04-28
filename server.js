@@ -87,21 +87,8 @@ app.get('/', async (req, res) => {
   }
 });
 
-  // get profile for user
-  app.get('/profile/:id', async (req, res) => {
-    try {
-       // find the user by id
-          const user = await User.findById(req.params.id);
-        // render to profile
-         res.render('profile', { user });
-      } catch (error) {
-          console.error(error);
-          // redirect to home page if there is an issue
-          res.redirect('/');
-        }
-     });
-
 app.use("/auth", authController);
+app.use("/", authController);
 app.use(isSignedIn);
 app.use("/project/", projectRouter);
 app.use("/task/", taskRouter);

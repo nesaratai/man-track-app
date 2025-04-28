@@ -1,46 +1,46 @@
 const express = require("express");
+// Define router
 const router = express.Router();
 
-// call project model
+// Call project model
 const Project = require("../models/project.js");
-// call user model
+// Call user model
 const User = require("../models/user.js")
 
 
-// create a project
+// Create a project
 router.post("/", async (req, res) => {
-    // find the current user
+    // Find the current user
     const currentUser = await User.findById(req.session.user._id);
-    // create the new project and link it to user
+    // Create the new project and link it to user
     const newProject = await Project.create({
-        // spread the project data
+        // Spread the project data
         ...req.body,
-        // add the userId field
+        // Add the userId field
         userId: currentUser._id
     });
 
-    // save the project
+    // Save the project
     await newProject.save();
 
-    // send the user back to the project list
+    // Send the user back to the project list
     res.redirect("/project/")
 });
 
-// list all projects
+// List all projects
 router.get('/', async (req, res) => {
     try {
-        // get projects from the database only for the current user
+        // Get projects from the database only for the current user
         const projects = await Project.find({
             userId: req.session.user._id
         }); 
-        console.log(projects)
-        // render the projects list for the current user
+        // Render the projects list for the current user
         res.render('projects/index.ejs', {
             projects
         });
     } catch (error) {
         console.log(error);
-        // redirect to home page if there is an issue
+        // Redirect to home page if there is an error
         res.redirect('/');
     }
 });
@@ -56,7 +56,7 @@ router.get('/:id', async (req, res) => {
         // Find the project by id
         const project = await Project.findById(req.params.id).populate('tasks');
 
-        // render project view page
+        // Render project view page
         res.render('projects/show.ejs', {
             project
         });
@@ -65,12 +65,12 @@ router.get('/:id', async (req, res) => {
         res.redirect('/project');
     }
 });
-// edit the project
+// Edit the project
 router.get('/:id/edit', async (req, res) => {
     try {
         // Find the project by id
         const project = await Project.findById(req.params.id);
-        // render edit page
+        // Render edit page
         res.render('projects/edit.ejs', { project });
     } catch (error) {
         console.error(error);
@@ -78,10 +78,12 @@ router.get('/:id/edit', async (req, res) => {
     }
 });
 
-//update the a project
+// Update the project
 router.put('/:id', async (req, res) => {
     try {
+        // Find the Project by Id, update and save it
         await Project.findByIdAndUpdate(req.params.id, req.body);
+        // Redirect to current project
         res.redirect(`/project/${req.params.id}`);
     } catch (error) {
         console.error(error);
@@ -89,12 +91,12 @@ router.put('/:id', async (req, res) => {
     }
 });
 
-// delet the project
+// Delet the project
 router.delete('/:id', async (req, res) => {
     try {
-        //finde the project by id and delete
+        // Find the project by id and delete
       await Project.findByIdAndDelete(req.params.id);
-      // then redirect to project
+      // Redirect to project page
       res.redirect('/project');
     } catch (error) {
       console.error(error);

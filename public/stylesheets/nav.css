@@ -9,12 +9,17 @@
   }
   
   .logo {
-    font-size: 1.5rem;
+    font-size: 24px;
     color: #F4E2DE;
     text-decoration: none;
     font-weight: bold;
   }
-  
+  .logo-img {
+    height: 30px;
+    width: 30px;
+    vertical-align: middle;
+    margin-right: 8px;
+  }
   
   .navbar-right {
     display: flex;

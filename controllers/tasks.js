@@ -46,9 +46,9 @@ router.post('/:projectId', async (req, res) => {
      await task.save();
   
 
-      // push task into the projects task array
+      // Push task into the projects task array
       project.tasks.push(task);
-      // save the project after adding task
+      // Save the project after adding task
       await project.save()
  
       // Redirect to the project detail page after adding the task
@@ -62,7 +62,7 @@ router.post('/:projectId', async (req, res) => {
   // Route to handle updating the task
 router.put('/tasks/:taskId', async (req, res) => {
   try {
-    //find the task by Id and update it with new data
+    // Find the task by Id and update it with new data
     const task = await Task.findByIdAndUpdate(req.params.id, req.body, {
       new: true
     });
@@ -81,9 +81,9 @@ router.put('/tasks/:taskId', async (req, res) => {
 // delet the task
 router.delete('/:id', async (req, res) => {
     try {
-        //finde the task by id and delete
+      // Find the task by id and delete
       await Task.findByIdAndDelete(req.params.id);
-      // then redirect to project
+      // Redirect to current project
       res.redirect(`/project/${project._id}`);
     } catch (error) {
       console.error(error);

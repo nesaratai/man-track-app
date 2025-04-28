@@ -1,8 +1,12 @@
 
 <link rel="stylesheet" href="/stylesheets/nav.css" />
+<link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 <nav class="navbar">
     <div class="navbar-left">
-      <a href="/" class="logo">ManTrack</a>
+      <a href="/" class="logo">
+        <img src="/images/logo.png" alt="ManTrack Logo" class="logo-img">
+        ManTrack
+      </a>
     </div>
 
     <button class="menu-toggle" id="menuToggle">&#9776;</button>
@@ -11,7 +15,7 @@
       <% if(user) { %>
         <a href="/">Home</a>
         <a href="/project/">Projects</a>
-        <a href="/profile/<%= user._id %>">Profile</a>
+        <a href="/profile">Profile</a>
         <a href="/auth/sign-out" class="sign-out">Sign Out</a>
       <% } else { %>
         <a href="/auth/sign-in">Sign In</a>
