@@ -13,7 +13,7 @@
 <%- include('./partials/_navbar.ejs') %>
 
 <body>
-  <div class="wrapper">
+  <main>
   <div class="content">
     <% if (user) { %>
       <h1 class="welcome">Welcome to ManTrack, <%= user.username %>!</h1>
@@ -51,7 +51,9 @@
       </section>
     <% } %>
   </div>
+</main>
+<footer>
   <%- include('./partials/_footer.ejs') %>
-</div>
+</footer>
 </body>
 </html>

@@ -12,7 +12,8 @@
 </head>
 
 <%- include('../partials/_navbar.ejs') %>
-<body></body>
+<body>
+<% const formatDate = date => date?.toISOString().slice(0, 10); %>
 <div class="form-container">
   <form action="/task/edit/<%= task._id %>?_method=PUT" method="POST">
     <div class="form-title">Edit Task</div>
@@ -21,15 +22,15 @@
     <label for="Type">Type</label>
     <select name="Type" id="type" required>
       <option disabled selected value="">-- Select Type --</option>
-      <option value="Task" <%= task.Type === 'Task' ? 'selected' : '' %>>Task</option>
-      <option value="Issue" <%= task.Type === 'Issue' ? 'selected' : '' %>>Issue</option>
+      <option value="Task" <%= task.Type.includes('Task') ? 'selected' : '' %>>Task</option>
+      <option value="Issue" <%= task.Type.includes('Issue') ? 'selected' : '' %>>Issue</option>
     </select>
     
     <label for="ReportedDate">Reported Date</label>
-    <input type="date" name="ReportedDate" id="reportedDate" >
+    <input type="date" name="ReportedDate" value="<%= formatDate(task.ReportedDate) %>" id="reportedDate" >
   
     <label for="DueDate">Due Date</label>
-    <input type="date" name="DueDate" id="dueDate" >
+    <input type="date" name="DueDate" value="<%= formatDate(task.DueDate) %>" id="dueDate" >
   
     <label for="Status">Status</label>
     <select name="Status" id="status" required>

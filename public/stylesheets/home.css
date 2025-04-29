@@ -1,4 +1,4 @@
-/* body for all pages */
+
 html, body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #F4E2DE;
@@ -6,6 +6,10 @@ html, body {
     height: 100%;
     margin: 2px;
     padding: 2px;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
   }
 
   h1 {

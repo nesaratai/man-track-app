@@ -4,8 +4,9 @@ footer {
     padding: 8px 0;
     font-family: 'Segoe UI', Tahoma, Geneva, sans-serif;
     text-align: center;
-    margin-top: 10px;
+    margin-top: auto;
     border-radius: 5px;
+    margin-bottom: 10px;
 }
 
 .footer-content {

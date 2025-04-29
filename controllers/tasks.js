@@ -8,7 +8,9 @@ const Project = require("../models/project.js");
 // Route to show the form for creating a new task for a specific project
 router.get('/add/:projectId', async (req, res) => {
     try {
+      // Get the Project by id
       const project = await Project.findById(req.params.projectId);
+      // Render to new task page
       res.render('tasks/new.ejs', { 
         project 
       });
@@ -21,9 +23,9 @@ router.get('/add/:projectId', async (req, res) => {
   // Route to show the edit page for a task
 router.get('/edit/:taskId', async (req, res) => {
   try {
-    // find the task by id
+    // Find the task by id
     const task = await Task.findById(req.params.taskId);
-    // Render the edit view 
+    // Render the edit task 
     res.render('tasks/edit.ejs', { 
       task 
     });
@@ -60,10 +62,10 @@ router.post('/:projectId', async (req, res) => {
   });
 
   // Route to handle updating the task
-router.put('/tasks/:taskId', async (req, res) => {
+router.put('/edit/:taskId', async (req, res) => {
   try {
     // Find the task by Id and update it with new data
-    const task = await Task.findByIdAndUpdate(req.params.id, req.body, {
+    const task = await Task.findByIdAndUpdate(req.params.taskId, req.body, {
       new: true
     });
 
@@ -71,23 +73,24 @@ router.put('/tasks/:taskId', async (req, res) => {
     await task.save();
 
     // Redirect back to the project page
-    res.redirect(`/project/${project._id}`);
+    res.redirect(`/project/${task.project}`);
+
   } catch (error) {
     console.error(error);
     res.redirect('/project');
   }
 });
 
-// delet the task
+// Delete the task
 router.delete('/:id', async (req, res) => {
     try {
       // Find the task by id and delete
-      await Task.findByIdAndDelete(req.params.id);
+       const task = await Task.findByIdAndDelete(req.params.id);
       // Redirect to current project
-      res.redirect(`/project/${project._id}`);
+      res.redirect(`/project/${task.project}`);
     } catch (error) {
       console.error(error);
-      res.redirect('/project');
+      res.redirect('/project/');
     }
   });
 
