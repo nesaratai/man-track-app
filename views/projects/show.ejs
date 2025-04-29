@@ -14,6 +14,7 @@
 <%- include('../partials/_navbar.ejs') %>
 
   <body>
+    <main>
     <!-- Project Section -->
     <div class="project-detail">
       <h1><%= project.ProjectName %> Project</h1>
@@ -72,7 +73,9 @@
       <% } %>
      <a href="/task/add/<%= project._id %>" class="add-btn">Add Task</a>
     </div>
+  </main>
+  <footer><%- include('../partials/_footer.ejs') %></footer>
   </body>
-  <%- include('../partials/_footer.ejs') %>
+  
 
 </html>
