@@ -6,6 +6,10 @@ html, body {
   height: 100%;
   margin: 2px;
   padding: 2px;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* home page for projects */
