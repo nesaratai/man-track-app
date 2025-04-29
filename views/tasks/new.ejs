@@ -13,6 +13,7 @@
 
 <%- include('../partials/_navbar.ejs') %>
 <body>
+  <main>
 <div class="form-container">
  
     <!-- New Task Form -->
@@ -44,6 +45,9 @@
 
   <a href="/project/<%= project._id %>" class="btn back-btn">Back to Project</a>
 </div>
+</main>
+<footer>
+  <%- include('../partials/_footer.ejs') %>
+</footer>
 </body>
-<%- include('../partials/_footer.ejs') %>
 </html>

@@ -13,18 +13,22 @@
 <%- include('../partials/_navbar.ejs') %>
 
 <body>
+    <main>
     <div class="wrapper">
         <div class="content">
-    <form action="/auth/sign-in" method="POST">
-        <div class="form-title">Log In</div>
-        <label for="username">Username:</label>
-        <input type="text" name="username" id="username" />
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password" />
-        <button class="button" type="submit">Sign in</button>
-    </form>
-</div>
-<%- include('../partials/_footer.ejs') %>
-</div>
+            <form action="/auth/sign-in" method="POST">
+                <div class="form-title">Log In</div>
+                <label for="username">Username:</label>
+                 <input type="text" name="username" id="username" />
+                 <label for="password">Password:</label>
+                 <input type="password" name="password" id="password" />
+                 <button class="button" type="submit">Sign in</button>
+             </form>
+        </div>
+    </div>
+    </main>
+    <footer>
+    <%- include('../partials/_footer.ejs') %>
+    </footer>
 </body>
 </html>

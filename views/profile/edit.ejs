@@ -16,6 +16,7 @@
     <% const formatDate = date => date?.toISOString().slice(0, 10); %>
     
   <!-- Edit Profile Form -->
+   <main>
     <form action="/profile?_method=PUT" method="POST" method="POST">
         <div class="form-title">Edit Profile</div>
 
@@ -30,6 +31,10 @@
   
       <button type="submit" class="button">Update Profile</button>
     </form>
+  </main>
+  <footer>
+    <%- include('../partials/_footer.ejs') %>
+  </footer>
 </body>
-<%- include('../partials/_footer.ejs') %>
+
 </html>

@@ -16,7 +16,7 @@
 <body>
   <% const formatDate = date => date?.toISOString().slice(0, 10); %>
   
-
+<main>
   <div>
     <!-- Edit Project Form -->
     <form action="/project/<%= project._id %>?_method=PUT" method="POST">
@@ -42,6 +42,10 @@
       <button class="button" type="submit">Update</button>
     </form>
   </div>
+</main>
+<footer>
+  <%- include('../partials/_footer.ejs') %>
+</footer>
 </body>
-<%- include('../partials/_footer.ejs') %>
+
 </html>
