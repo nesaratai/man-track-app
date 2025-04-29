@@ -40,9 +40,7 @@
   - Bcrypt.js
 
 
-## Plan and Relations
-- **Plan** <br>
-<img src="public/images/plan.png" alt="ManStack Logo" width="500"/>
+## ERD Structure
 
 - **Relation** <br>
 <img src="public/images/relation.png" alt="ManStack Logo" width="350"/>

@@ -65,16 +65,19 @@ app.use(passUserToView);
 
 
 
-// render the home page
+// Render the home page
 app.get('/', async (req, res) => {
   try {
     let userProjects = [];
+    // If signed in, find all projects created by the user 
     if (req.session.user) {
       userProjects = await Project.find({ createdBy: req.session.user._id });
     }
+    // Find all projects in the database
     const allProjects = await Project.find();
+    //Find all tasks, and sort them
     const tasks = await Task.find().sort({ ReportedDate: -1 });
-
+     // Send all data to home page to view
     res.render('index', {
       user: req.session.user,
       userProjects,
