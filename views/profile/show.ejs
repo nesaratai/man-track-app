@@ -13,6 +13,7 @@
 <%- include('../partials/_navbar.ejs') %>
 
 <body>
+  <main>
     <div class="profile-container">
         <h1>My Profile</h1>
         <div><span>First Name:</span> <%= user.name %></div>
@@ -22,6 +23,8 @@
       
         <a href="/profile/<%= user._id %>/edit" class="btn">Edit Profile</a>
       </div>
+    </main>
+    <footer><%- include('../partials/_footer.ejs') %></footer>
 </body>
-<%- include('../partials/_footer.ejs') %>
+
 </html>
