@@ -1,167 +1,166 @@
 /* body for all pages */
 html, body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #F4E2DE;
-    color: #025259;
-    height: 100%;
-    margin: 2px;
-    padding: 2px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #F4E2DE;
+  color: #025259;
+  height: 100%;
+  margin: 2px;
+  padding: 2px;
 }
 
 /* home page for projects */
 h1 {
-    text-align: center;
-    color: #025259;
-    font-size: 18px; 
-    margin-top: 20px;
+  text-align: center;
+  color: #025259;
+  font-size: 24px; 
+  margin-top: 20px;
 }
 .table-container {
-    width: 80%;
-    margin: 20px auto;
-    overflow-x: auto;
-    padding: 10px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  margin: 20px auto;
+  overflow-x: auto;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 .project-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 8px;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 18px;
 }
 .project-table th,
 .project-table td {
-    padding: 8px 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
 }
 .project-table th {
-    background-color: #025259;
-    color: #fff;
+  background-color: #025259;
+  color: #fff;
 }
 .project-table tr:hover {
-    background-color: #f4f4f4;
+  background-color: #f4f4f4;
 }
 .project-table td a {
-    color: #025259;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
+  color: #025259;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
 }
 .project-table td a:hover {
-    color: #D94F04;
+  color: #D94F04;
 }
 .addbtn {
-    display: inline-block;
-    background-color: rgb(214, 217, 153);
-    font-size: 7px;
-    text-decoration: none;
-    padding: 5px 5px;
-    text-align: center;
-    border-radius: 3px;
-    font-weight: bold;
-}
-.addbtn a:hover {
-    transform: scale(1.1);
-    cursor: pointer;
-}
-
-/* Show project page*/
-.container {
-  display: flex;
-  margin: 20px;
-}
-.project-detail {
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-left: 10px;
-  margin-right: 10px;
-}
-.project-detail h1 {
-  font-size: 14px;
-}
-.project-detail .info p {
-  margin: 10px;
-  font-size: 10px;
-}
-.actions {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
-}
-.btn{
-    display: inline-block;
-    background-color: rgb(214, 217, 153);
-    font-size: 10px;
-    text-decoration: none;
-    padding: 7px 10px;
-    text-align: center;
-    border-radius: 3px;
-    font-weight: bold;
-    margin: 5px;
-} 
-.btn:hover {
-    transform: 1.1%;
-    cursor: pointer;
-    background-color: #ee7939;
-}
-
-
-.task-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 8px;
-}
-
-.task-table th, .task-table td {
-  border: 1px solid #ddd;
-}
-
-
-.task-table th {
-  padding-top: 6px;
-  padding-bottom: 6px;
-  text-align: left;
-  background-color: #2d5849;
-  color: white;
-}
-.dlt-btn {
-  background: none;
-  border: none;
-  color: red;
-  cursor: pointer;
-  font-size: 12px;
-}
-
-.dlt-btn:hover {
-  color: darkred;
-}
-
-.edt-btn {
-  background-color: none;
-  color: rgb(218, 167, 46);
-  padding: 6px 8px;
-  border: none;
-  border-radius: 4px;
-  font-size: 12px;
-  text-decoration: none;
-}
-
-.edt-btn:hover {
-  color: #038b5e;
-}
-
-.add-btn{
   display: inline-block;
   background-color: rgb(214, 217, 153);
-  font-size: 10px;
+  font-size: 16px;
   text-decoration: none;
   padding: 7px 10px;
   text-align: center;
   border-radius: 3px;
   font-weight: bold;
+}
+.addbtn a:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+/* Show project page*/
+.container {
+display: flex;
+margin: 20px;
+}
+.project-detail {
+border-radius: 8px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+margin-left: 10px;
+margin-right: 10px;
+}
+.project-detail h1 {
+font-size: 22px;
+}
+.project-detail .info p {
+margin: 10px;
+font-size: 18px;
+}
+.actions {
+display: flex;
+justify-content: space-between;
+margin-top: 10px;
+}
+.btn{
+  display: inline-block;
+  background-color: rgb(214, 217, 153);
+  font-size: 18px;
+  text-decoration: none;
+  padding: 8px 12px;
+  text-align: center;
+  border-radius: 3px;
+  font-weight: bold;
   margin: 5px;
 } 
+.btn:hover {
+  transform: 1.1%;
+  cursor: pointer;
+  background-color: #ee7939;
+}
+
+
+.task-table {
+width: 100%;
+border-collapse: collapse;
+font-size: 18px;
+}
+
+.task-table th, .task-table td {
+border: 1px solid #ddd;
+}
+
+.task-table th {
+padding-top: 8px;
+padding-bottom: 8px;
+text-align: left;
+background-color: #2d5849;
+color: white;
+}
+.dlt-btn {
+background: none;
+border: none;
+color: red;
+cursor: pointer;
+font-size: 18px;
+}
+
+.dlt-btn:hover {
+color: darkred;
+}
+
+.edt-btn {
+background-color: none;
+color: rgb(218, 167, 46);
+padding: 6px 10px;
+border: none;
+border-radius: 4px;
+font-size: 18px;
+text-decoration: none;
+}
+
+.edt-btn:hover {
+color: #038b5e;
+}
+
+.add-btn{
+display: inline-block;
+background-color: rgb(214, 217, 153);
+font-size: 18px;
+text-decoration: none;
+padding: 8px 12px;
+text-align: center;
+border-radius: 3px;
+font-weight: bold;
+margin: 5px;
+} 
 .add-btn:hover{
-  background-color: #D94F04;
+background-color: #D94F04;
 }

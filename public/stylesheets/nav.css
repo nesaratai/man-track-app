@@ -1,78 +1,78 @@
-  /* Navbar */
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #025259;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+}
+
+.logo {
+  font-size: 26px;
+  color: #F4E2DE;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.logo-img {
+  height: 30px;
+  width: 30px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.navbar-right {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 14px;
+}
+
+.navbar-right a {
+  padding: 0.5rem 1rem;
+  color: #F4E2DE;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.navbar-right a:hover {
+  background-color: #D94F04;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  color: #F4E2DE;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+/* responsive navbar */
+@media (max-width: 440px) {
   .navbar {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #025259;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
+    flex-direction: column;
+    justify-content: flex-start;
   }
-  
-  .logo {
-    font-size: 24px;
-    color: #F4E2DE;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  .logo-img {
-    height: 30px;
-    width: 30px;
-    vertical-align: middle;
-    margin-right: 8px;
-  }
-  
   .navbar-right {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    font-size: 12px;
-  }
-  
-  .navbar-right a {
-    padding: 0.5rem 1rem;
-    color: #F4E2DE;
-    text-decoration: none;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-
-  .navbar-right a:hover {
-    background-color: #D94F04;
-    color: #fff;
-    transform: scale(1.05);
-  }
-  
-  
-  .menu-toggle {
+    flex-direction: column;
+    width: 100%;
     display: none;
-    font-size: 1.8rem;
-    color: #F4E2DE;
-    background: transparent;
-    border: none;
-    cursor: pointer;
+    margin-top: 1rem;
   }
-  
-  /* responsive navbar */
-  @media (max-width: 440px) {
-    .navbar {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-    }
-    .navbar-right {
-      flex-direction: column;
-      width: 100%;
-      display: none;
-      margin-top: 1rem;
-    }
-    .navbar-right.show {
-      display: flex;
-    }
-    .navbar-right a {
-      width: 100%;
-      text-align: left;
-      padding: 0.75rem;
-    }
-    .menu-toggle{
-        display: flex;
-    }
-  };
+  .navbar-right.show {
+    display: flex;
+  }
+  .navbar-right a {
+    width: 100%;
+    text-align: left;
+    padding: 0.75rem;
+  }
+  .menu-toggle {
+    display: flex;
+  }
+}
